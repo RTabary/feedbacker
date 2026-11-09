@@ -1,0 +1,17 @@
+{
+  "name": "@feedbacker/e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm --dir .. build && playwright test",
+    "serve:fixture": "node fixtures/product-site/server.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.0",
+    "pg": "^8.23.1"
+  }
+}

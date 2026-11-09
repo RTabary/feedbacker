@@ -1,0 +1,26 @@
+{
+  "name": "feedbacker",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.30.0",
+  "engines": { "node": ">=22.18 <23", "pnpm": ">=10" },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @feedbacker/api --filter @feedbacker/web --filter @feedbacker/connector run dev",
+    "dev:fixture": "pnpm build && pnpm --parallel --filter @feedbacker/api --filter @feedbacker/e2e run serve:fixture",
+    "db:migrate": "pnpm --filter @feedbacker/api run db:migrate",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "vitest run",
+    "test:e2e": "pnpm --filter @feedbacker/e2e run test",
+    "build": "pnpm --filter @feedbacker/connector run build && pnpm --filter @feedbacker/web run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  }
+}

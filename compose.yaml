@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: feedbacker
+      POSTGRES_PASSWORD: feedbacker
+      POSTGRES_DB: feedbacker
+    ports:
+      - "${FEEDBACKER_DB_PORT:-54329}:5432"
+    volumes:
+      - ./docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+      - feedbacker-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U feedbacker -d feedbacker"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  feedbacker-db:
